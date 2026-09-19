@@ -1,111 +1,244 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnimeVerse Caption Hub</title>
-    <!-- Google Search Console Verification Meta Tag -->
-    <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE">
+    <meta name="google-site-verification" content="EjdUCZKNVLILAtDMl1qq4mnISi0szkAfCLE_eL02L5U" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f19;
-            color: #ffffff;
-            line-height: 1.6;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-        header h1 {
-            color: #58a6ff;
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        header p {
-            color: #8b949e;
-            font-size: 16px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #161b22;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-            flex: 1;
-            width: 100%;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            color: #58a6ff;
-            font-size: 20px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 8px;
-        }
-        .section p {
-            color: #c9d1d9;
-            font-size: 15px;
-            margin-bottom: 10px;
-        }
-        .email-link {
-            color: #58a6ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .email-link:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #8b949e;
-            font-size: 14px;
-            border-top: 1px solid #21262d;
-            margin-top: 40px;
-        }
+        body { font-family: 'Poppins', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
 
-    <header>
-        <h1>AnimeVerse Caption Hub</h1>
-        <p>Your Ultimate Source for Epic Anime Quotes & Streetwear Captions</p>
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">AnimeVerse Caption Hub</h1>
+                    <p class="text-xs text-slate-400">Level up your social media with epic anime quotes</p>
+                </div>
+            </a>
+            <nav class="flex items-center gap-2 text-sm">
+                <a href="#generator" class="px-4 py-2 rounded-lg bg-indigo-600/10 hover:bg-indigo-600/20 text-indigo-400 border border-indigo-500/20 transition-colors font-medium">Generator</a>
+                <button onclick="openModal('privacyModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">Privacy</button>
+                <button onclick="openModal('aboutModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">About</button>
+                <button onclick="openModal('contactModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">Contact</button>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="section">
-            <h2>Welcome to the Hub</h2>
-            <p>Explore high-impact captions, character quotes, and aesthetic text snippets inspired by your favorite anime series like Jujutsu Kaisen, Berserk, Naruto, One Piece, and Attack on Titan.</p>
+    <!-- Main Content Area -->
+    <main id="generator" class="flex-grow max-w-4xl mx-auto px-4 py-10 w-full flex flex-col items-center">
+        <!-- Hero Section -->
+        <div class="text-center mb-10 max-w-2xl">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span> V2.0 Ultimate Anime Engine
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Generate Epic <span class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Anime Captions</span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base">
+                Type your favorite anime, character, or vibe below and instantly generate viral captions for TikTok, Instagram Reels, and Shorts.
+            </p>
         </div>
 
-        <div class="section">
-            <h2>About the Project</h2>
-            <p>AnimeVerse Caption Hub is designed for creators, editors, and fans looking to style their content, reels, and merchandise with the best aesthetic quotes.</p>
+        <!-- Generator Box -->
+        <div class="w-full bg-slate-900/80 border border-slate-800/80 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden mb-12">
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="space-y-4">
+                <label for="animeInput" class="block text-sm font-medium text-slate-300">
+                    Enter Anime, Character, or Vibe (e.g., <span class="text-indigo-400 font-semibold">Gojo Satoru, Solo Leveling, Zoro</span>)
+                </label>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-grow">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
+                            <i class="fa-solid fa-fire text-indigo-500"></i>
+                        </span>
+                        <input type="text" id="animeInput" placeholder="Type anime character, mood, or show..." 
+                            class="w-full pl-11 pr-4 py-3.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all text-sm">
+                    </div>
+                    <button onclick="generateCaptions()" 
+                        class="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/25 transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm sm:w-auto cursor-pointer">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Captions
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions Tags -->
+            <div class="mt-6 flex flex-wrap items-center gap-2">
+                <span class="text-xs text-slate-500 font-medium mr-1">Trending:</span>
+                <button onclick="setQuery('Gojo Satoru')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Gojo Satoru</button>
+                <button onclick="setQuery('Ryomen Sukuna')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Sukuna</button>
+                <button onclick="setQuery('Roronoa Zoro')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Zoro</button>
+                <button onclick="setQuery('Sung Jin-Woo')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Sung Jin-Woo</button>
+                <button onclick="setQuery('Eren Yeager')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Eren Yeager</button>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>Contact Us</h2>
-            <p>If you have any questions, suggestions, or feedback regarding our platform, feel free to reach out to us directly.</p>
-            <p>Email: <a href="mailto:shahmomen08@gmail.com" class="email-link">shahmomen08@gmail.com</a></p>
+        <!-- Output Results Section -->
+        <div id="resultsContainer" class="w-full space-y-4 hidden">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-indigo-400"></i> Generated Captions
+                </h3>
+                <span class="text-xs text-slate-400">Click any card to copy</span>
+            </div>
+            <div id="captionsList" class="grid gap-4">
+                <!-- Dynamic cards will appear here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-900/30 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 AnimeVerse Caption Hub. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <button onclick="openModal('privacyModal')" class="hover:text-slate-400 transition-colors cursor-pointer">Privacy Policy</button>
+                <button onclick="openModal('aboutModal')" class="hover:text-slate-400 transition-colors cursor-pointer">About Us</button>
+                <button onclick="openModal('contactModal')" class="hover:text-slate-400 transition-colors cursor-pointer">Contact</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals for Privacy, About, Contact -->
+    <div id="privacyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">At AnimeVerse Caption Hub, your privacy is our priority. We use standard log files and cookies to improve your user experience and prepare for future ad integrations.</p>
+            <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 AnimeVerse Caption Hub. All rights reserved.</p>
-    </footer>
+    <div id="aboutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <h3 class="text-xl font-bold text-white">About Us</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">AnimeVerse Caption Hub is your ultimate destination for epic anime quotes and viral social media captions for TikTok, Reels, and Shorts with a single click.</p>
+            <button onclick="closeModal('aboutModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
+        </div>
+    </div>
 
+    <div id="contactModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <h3 class="text-xl font-bold text-white">Contact Us</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">If you have any questions, suggestions, or feedback regarding our caption generator tool, feel free to reach out to us via email.</p>
+            <p class="text-xs text-indigo-400 font-semibold">Email: <a href="mailto:shahmomen08@gmail.com" class="underline">shahmomen08@gmail.com</a></p>
+            <button onclick="closeModal('contactModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const captionDatabase = {
+            "gojo satoru": [
+                "Throughout heaven and earth, I alone am the honored one. 🔵✨ #GojoSatoru #JujutsuKaisen #AnimeEdits",
+                "You're weak because you lack enough hatred... nah, I'm just too strong. 😎🔥 #Gojo #DomainExpansion",
+                "Don't worry, I'm the strongest. 🕶️⚡ #JJK #GojoEdit #AnimeReels"
+            ],
+            "ryomen sukuna": [
+                "Stand proud, you are strong. But against the King of Curses? Fatality. 🩸👑 #Sukuna #JJK #KingOfCurses",
+                "Where is the fun if nobody can even entertain me? 😈🔪 #RyomenSukuna #AnimeQuotes",
+                "Know your place, mere insects. ⚡🔥 #SukunaEdit #AnimeVillain"
+            ],
+            "roronoa zoro": [
+                "Nothing happened. 🗡️🩸 #Zoro #OnePiece #KingOfHell",
+                "When you decide to go to sea, you fight against your own destiny! 🏴‍☠️⚔️ #RoronoaZoro #AnimeMotivation",
+                "Scars on the back are a swordsman's shame. 🛡️🔥 #ZoroEdit #AnimeEdits"
+            ],
+            "sung jin-woo": [
+                "Arise. 🌑👑 #SoloLeveling #SungJinWoo #ShadowMonarch",
+                "The weak don't have the right to choose how they die. ⚔️⚡ #JinWoo #AnimeReels",
+                "I alone level up while the world sleeps. 🛡️🔥 #SoloLevelingEdit"
+            ],
+            "eren yeager": [
+                "If you don't fight, you can't win. Fight! Fight! 🕊️🔥 #ErenYeager #AttackOnTitan #AOT",
+                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️ #Tatakae #ErenEdit",
+                "Freedom isn't given, it's taken. 🔓🩸 #AOTEdits #ShingekiNoKyojin"
+            ]
+        };
+
+        function setQuery(val) {
+            document.getElementById('animeInput').value = val;
+            generateCaptions();
+        }
+
+        function generateCaptions() {
+            const query = document.getElementById('animeInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('resultsContainer');
+            const captionsList = document.getElementById('captionsList');
+
+            if (!query) {
+                alert('Please type an anime or character name first!');
+                return;
+            }
+
+            captionsList.innerHTML = '';
+            
+            let matchedCaptions = [];
+            for (let key in captionDatabase) {
+                if (query.includes(key) || key.includes(query)) {
+                    matchedCaptions = matchedCaptions.concat(captionDatabase[key]);
+                }
+            }
+
+            if (matchedCaptions.length === 0) {
+                matchedCaptions = [
+                    `Living life in my own anime arc. ✨🔥 #${query.replace(/\s+/g, '')} #AnimeVibes`,
+                    `Limits exist only for those who accept them. Leveling up daily! ⚡🚀 #${query.replace(/\s+/g, '')} #AnimeEdit`,
+                    `The protagonist energy is unmatched right now. 🌌⚔️ #${query.replace(/\s+/g, '')} #Reels`
+                ];
+            }
+
+        resultsContainer.classList.remove('hidden');
+
+            matchedCaptions.forEach((cap, index) => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-xl p-4 flex items-center justify-between gap-4 transition-all group cursor-pointer";
+                card.onclick = () => copyToClipboard(cap, card);
+                
+                card.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-lg bg-indigo-600/10 text-indigo-400 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5 border border-indigo-500/20">${index + 1}</span>
+                        <p class="text-sm text-slate-200">${cap}</p>
+                    </div>
+                    <button class="px-3 py-2 rounded-lg bg-slate-800 group-hover:bg-indigo-600 text-slate-300 group-hover:text-white text-xs font-medium transition-colors flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
+                        <i class="fa-regular fa-copy"></i> Copy
+                    </button>
+                `;
+                captionsList.appendChild(card);
+            });
+        }
+
+        function copyToClipboard(text, cardElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = cardElement.querySelector('button');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check text-emerald-400"></i> Copied!`;
+                btn.classList.add('bg-emerald-950/50', 'text-emerald-300');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('bg-emerald-950/50', 'text-emerald-300');
+                }, 2000);
+            });
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
