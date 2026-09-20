@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnimeVerse Caption Hub - Best Anime Quotes & Social Media Captions</title>
     <meta name="description" content="Generate epic anime captions, quotes, and hashtags for any anime character. Level up your social media with viral anime content!">
-    <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions">
+    <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions, Web Stories">
     <meta name="author" content="Momen Shah">
     
-    <!-- Google Search Console Verification Placeholder (Aapka verified code safe hai) -->
-    <!-- <meta name="google-site-verification" content="Aapka_Verify_Code_Yahan_Aayega" /> -->
-
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="AnimeVerse Caption Hub - Viral Anime Quotes">
-    <meta property="og:description" content="Get viral anime captions and quotes instantly for any anime character.">
+    <meta property="og:description" content="Get viral anime captions and visual Web Stories instantly.">
     <meta property="og:type" content="website">
     
     <!-- Google Fonts & Styling -->
@@ -190,6 +187,35 @@
         .copy-btn.copied {
             background: #10b981;
         }
+        /* Web Stories Grid Styling */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .story-card {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 1px solid #4338ca;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .story-card:hover {
+            transform: translateY(-4px);
+            border-color: #ec4899;
+        }
+        .story-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #f472b6;
+        }
+        .story-card p {
+            font-size: 0.85rem;
+            color: #d1d5db;
+        }
         .static-page-content {
             background: #171833;
             padding: 2rem;
@@ -206,9 +232,6 @@
             margin-bottom: 1rem;
             color: #d1d5db;
             font-size: 0.95rem;
-        }
-        .static-page-content ul {
-            padding-left: 1.5rem;
         }
         footer {
             text-align: center;
@@ -262,10 +285,23 @@
 
         <!-- 2. WEB STORIES TAB -->
         <div id="section-stories" class="page-section">
-            <div class="static-page-content">
-                <h2>🔥 Visual Anime Web Stories</h2>
-                <p>Welcome to our upcoming Google Web Stories hub! Here you will find tap-through visual slides featuring legendary anime moments, epic quotes, and trending aesthetic edits designed for mobile users.</p>
-                <p>Check back daily as we roll out high-speed visual cards optimized for Google Discover and mobile sharing!</p>
+            <div class="static-page-content" style="margin-bottom: 1.5rem;">
+                <h2>🔥 Google Web Stories Hub</h2>
+                <p>Explore our high-speed visual anime cards designed to explode on Google Discover. Tap below to view our trending story collections:</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card" onclick="alert('Opening Gojo Story Slide...')">
+                    <h3>🔵 Gojo Satoru Edit Story</h3>
+                    <p>Top 5 Honored One quotes & aesthetic visual slides.</p>
+                </div>
+                <div class="story-card" onclick="alert('Opening Sukuna Story Slide...')">
+                    <h3>👑 King of Curses Story</h3>
+                    <p>Ryomen Sukuna domain expansion visual highlights.</p>
+                </div>
+                <div class="story-card" onclick="alert('Opening Zoro Story Slide...')">
+                    <h3>⚔️ Roronoa Zoro Story</h3>
+                    <p>King of Hell sword style quotes and card graphics.</p>
+                </div>
             </div>
         </div>
 
@@ -303,7 +339,6 @@
     </footer>
 
     <script>
-        // Master Database with flexible keywords
         const animeCaptionsDb = {
             "gojo": [
                 "Throughout heaven and earth, I alone am the honored one. 🔵✨\n#GojoSatoru #JujutsuKaisen #AnimeEdits",
@@ -435,5 +470,5 @@
         };
     </script>
 </body>
- </html>
-         
+</html>
+                                        
