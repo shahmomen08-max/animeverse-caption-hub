@@ -187,6 +187,7 @@
         .copy-btn.copied {
             background: #10b981;
         }
+        
         /* Web Stories Grid Styling */
         .stories-grid {
             display: grid;
@@ -216,6 +217,111 @@
             font-size: 0.85rem;
             color: #d1d5db;
         }
+
+        /* Fullscreen Story Viewer Modal Styling */
+        #storyModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .story-container {
+            width: 100%;
+            max-width: 400px;
+            height: 80vh;
+            background: linear-gradient(135deg, #1e1b4b, #111827);
+            border: 2px solid #4338ca;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .story-header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .progress-bars {
+            display: flex;
+            gap: 4px;
+        }
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #ec4899;
+            transition: width 0.1s linear;
+        }
+        .progress-fill.active {
+            width: 100%;
+            transition: width 4s linear;
+        }
+        .progress-fill.completed {
+            width: 100%;
+        }
+        .story-top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+        .close-story {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .story-body {
+            text-align: center;
+            margin: auto 0;
+            padding: 1rem;
+        }
+        .story-body h3 {
+            color: #f472b6;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .story-body p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #f3f4f6;
+        }
+        .story-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .story-nav-btn {
+            flex: 1;
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .story-nav-btn:hover {
+            background: #6d28d9;
+        }
+
         .static-page-content {
             background: #171833;
             padding: 2rem;
@@ -277,9 +383,7 @@
 
             <div class="results-section">
                 <h2 id="resultHeading">✨ Generated Captions (Click to Copy)</h2>
-                <div id="captionsContainer">
-                    <!-- Dynamic Random Captions -->
-                </div>
+                <div id="captionsContainer"></div>
             </div>
         </div>
 
@@ -287,18 +391,18 @@
         <div id="section-stories" class="page-section">
             <div class="static-page-content" style="margin-bottom: 1.5rem;">
                 <h2>🔥 Google Web Stories Hub</h2>
-                <p>Explore our high-speed visual anime cards designed to explode on Google Discover. Tap below to view our trending story collections:</p>
+                <p>Explore our high-speed visual anime cards designed to explode on Google Discover. Tap below to launch immersive story slides:</p>
             </div>
             <div class="stories-grid">
-                <div class="story-card" onclick="alert('Opening Gojo Story Slide...')">
+                <div class="story-card" onclick="openStory('gojo')">
                     <h3>🔵 Gojo Satoru Edit Story</h3>
                     <p>Top 5 Honored One quotes & aesthetic visual slides.</p>
                 </div>
-                <div class="story-card" onclick="alert('Opening Sukuna Story Slide...')">
+                <div class="story-card" onclick="openStory('sukuna')">
                     <h3>👑 King of Curses Story</h3>
                     <p>Ryomen Sukuna domain expansion visual highlights.</p>
                 </div>
-                <div class="story-card" onclick="alert('Opening Zoro Story Slide...')">
+                <div class="story-card" onclick="openStory('zoro')">
                     <h3>⚔️ Roronoa Zoro Story</h3>
                     <p>King of Hell sword style quotes and card graphics.</p>
                 </div>
@@ -320,7 +424,6 @@
                 <h2>Privacy Policy</h2>
                 <p>At AnimeVerse Caption Hub, accessible from our web app, your privacy is extremely important to us.</p>
                 <p><strong>Log Files:</strong> Like many websites, we use log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, and referring pages.</p>
-                <p><strong>Cookies and Web Beacons:</strong> We may use cookies to store information about visitors' preferences and to optimize user experience based on browser type.</p>
             </div>
         </div>
 
@@ -334,6 +437,27 @@
         </div>
     </main>
 
+    <!-- FULLSCREEN STORY MODAL PLAYER -->
+    <div id="storyModal">
+        <div class="story-container">
+            <div class="story-header">
+                <div class="progress-bars" id="progressBarsContainer"></div>
+                <div class="story-top-info">
+                    <span id="storyTitleIndicator">Anime Story</span>
+                    <button class="close-story" onclick="closeStory()">&times;</button>
+                </div>
+            </div>
+            <div class="story-body">
+                <h3 id="slideTitle">Title</h3>
+                <p id="slideText">Slide content goes here...</p>
+            </div>
+            <div class="story-footer">
+                <button class="story-nav-btn" onclick="prevSlide()">Prev</button>
+                <button class="story-nav-btn" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2026 AnimeVerse Caption Hub. Built for <span>Viral Growth</span> by Momen Shah.</p>
     </footer>
@@ -341,55 +465,142 @@
     <script>
         const animeCaptionsDb = {
             "gojo": [
-                "Throughout heaven and earth, I alone am the honored one. 🔵✨\n#GojoSatoru #JujutsuKaisen #AnimeEdits",
-                "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥\n#Gojo #DomainExpansion #JJK",
-                "Don't worry, I'm the strongest. 🕶️⚡\n#GojoEdit #AnimeReels #JujutsuKaisen",
-                "It's not about whether I can, I have to do it. 🌌\n#GojoSatoru #AnimeQuotes",
-                "The process of learning what it means to be strong is lonely. 💫\n#GojoSatoru #JJKEdit"
+                "Throughout heaven and earth, I alone am the honored one. 🔵✨\n#GojoSatoru #JujutsuKaisen",
+                "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥\n#Gojo #DomainExpansion",
+                "Don't worry, I'm the strongest. 🕶️⚡\n#GojoEdit #AnimeReels"
             ],
             "sukuna": [
-                "Stand proud, you are strong. 🔥👑\n#Sukuna #JujutsuKaisen #KingOfCurses",
-                "Know your place, mere insects. The king has arrived. ⚡😈\n#RyomenSukuna #JJKManga",
-                "Fools who don't know true strength will always perish first. 🩸\n#SukunaEdit #AnimeVillain"
+                "Stand proud, you are strong. 🔥👑\n#Sukuna #KingOfCurses",
+                "Know your place, mere insects. The king has arrived. ⚡😈\n#RyomenSukuna #JJK",
+                "Fools who don't know true strength will always perish first. 🩸\n#SukunaEdit"
             ],
             "zoro": [
-                "Nothing happened. 🗡️🩸\n#RoronoaZoro #OnePiece #ZoroEpicMoment",
-                "When the world forces you to be a warrior, you draw your swords. ⚔️🔥\n#Zoro #KingOfHell #OnePieceEdits",
-                "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes #AnimeMotivation"
-            ],
-            "eren": [
-                "If you don't fight, you can't win. Fight! 🕊️🔥\n#ErenYeager #AttackOnTitan #AOT",
-                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️\n#Eren #Freedom #ShingekiNoKyojin"
-            ],
-            "naruto": [
-                "Hard work is worthless for those that don't believe in themselves. 🍥⚡\n#NarutoUzumaki #NarutoQuotes #Hokage",
-                "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden #AnimeMotivation"
-            ],
-            "kaneki": [
-                "What's wrong? Is it so strange to eat a human? Ghoul mode activated. 🩸🖤\n#KenKaneki #TokyoGhoul #KanekiEdit",
-                "I'm not the protagonist of a novel or anything... I'm just a college student who likes to read. ☕📖\n#TokyoGhoul #KanekiKen"
-            ],
-            "guts": [
-                "In this world, is the destiny of mankind controlled by some transcendental entity or law? ⚔️🖤\n#Guts #Berserk #BlackSwordsman",
-                "Struggle, rage, and contend... that is the only sword of a mortal! 🔥🩸\n#BerserkEdit #GutsQuotes"
+                "Nothing happened. 🗡️🩸\n#RoronoaZoro #OnePiece",
+                "When the world forces you to be a warrior, you draw your swords. ⚔️🔥\n#Zoro #KingOfHell",
+                "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes"
             ]
         };
+
+        const storyData = {
+            "gojo": {
+                title: "Gojo Satoru Story",
+                slides: [
+                    { heading: "The Honored One", text: "Throughout heaven and earth, I alone am the honored one. 🔵✨" },
+                    { heading: "Limitless Power", text: "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥" },
+                    { heading: "The Strongest", text: "Don't worry, I'm the strongest. 🕶️⚡" }
+                ]
+            },
+            "sukuna": {
+                title: "King of Curses",
+                slides: [
+                    { heading: "Stand Proud", text: "Stand proud, you are strong. 🔥👑" },
+                    { heading: "Absolute Rule", text: "Know your place, mere insects. The king has arrived. ⚡😈" },
+                    { heading: "True Strength", text: "Fools who don't know true strength will always perish first. 🩸" }
+                ]
+            },
+            "zoro": {
+                title: "Roronoa Zoro Story",
+                slides: [
+                    { heading: "Nothing Happened", text: "Nothing happened. 🗡️🩸" },
+                    { heading: "King of Hell", text: "When the world forces you to be a warrior, you draw your swords. ⚔️🔥" },
+                    { heading: "Swordsman Pride", text: "Scars on the back are a swordsman's shame. 🛡️" }
+                ]
+            }
+        };
+
+        let currentStoryKey = null;
+        let currentSlideIndex = 0;
+        let storyTimer = null;
+
+        function openStory(key) {
+            currentStoryKey = key;
+            currentSlideIndex = 0;
+            document.getElementById('storyModal').style.display = 'flex';
+            document.getElementById('storyTitleIndicator').textContent = storyData[key].title;
+            buildProgressBars();
+            showSlide(currentSlideIndex);
+        }
+
+        function closeStory() {
+            document.getElementById('storyModal').style.display = 'none';
+            clearTimeout(storyTimer);
+        }
+
+        function buildProgressBars() {
+            const container = document.getElementById('progressBarsContainer');
+            container.innerHTML = '';
+            const slides = storyData[currentStoryKey].slides;
+            for (let i = 0; i < slides.length; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'progress-bar';
+                bar.innerHTML = '<div class="progress-fill" id="fill-' + i + '"></div>';
+                container.appendChild(bar);
+            }
+        }
+
+        function showSlide(index) {
+            clearTimeout(storyTimer);
+            const slides = storyData[currentStoryKey].slides;
+            if (index >= slides.length) {
+                closeStory();
+                return;
+            }
+            if (index < 0) {
+                currentSlideIndex = 0;
+                index = 0;
+            }
+
+            document.getElementById('slideTitle').textContent = slides[index].heading;
+            document.getElementById('slideText').textContent = slides[index].text;
+
+            // Update Progress bars visual state
+            for (let i = 0; i < slides.length; i++) {
+                const fill = document.getElementById('fill-' + i);
+                fill.className = 'progress-fill';
+                if (i < index) {
+                    fill.classList.add('completed');
+                } else if (i === index) {
+                    setTimeout(() => fill.classList.add('active'), 50);
+                }
+            }
+
+            // Auto advance after 4 seconds per slide
+            storyTimer = setTimeout(() => {
+                nextSlide();
+            }, 4000);
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            const slides = storyData[currentStoryKey].slides;
+            if (currentSlideIndex < slides.length) {
+                showSlide(currentSlideIndex);
+            } else {
+                closeStory();
+            }
+        }
+
+        function prevSlide() {
+            currentSlideIndex--;
+            if (currentSlideIndex >= 0) {
+                showSlide(currentSlideIndex);
+            } else {
+                currentSlideIndex = 0;
+                showSlide(0);
+            }
+        }
 
         function switchTab(tabId) {
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-            
             document.getElementById('section-' + tabId).classList.add('active');
             const activeNav = document.getElementById('nav-' + tabId);
             if(activeNav) activeNav.classList.add('active');
-            
             window.scrollTo(0, 0);
         }
 
         function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                performSearch();
-            }
+            if (event.key === 'Enter') performSearch();
         }
 
         function performSearch() {
@@ -403,31 +614,19 @@
             }
 
             heading.textContent = `✨ Captions for "${document.getElementById("animeSearchInput").value}"`;
-
             let matchedKey = Object.keys(animeCaptionsDb).find(key => query.includes(key));
-            
-            let captionsList = [];
-            if (matchedKey) {
-                captionsList = animeCaptionsDb[matchedKey];
-            } else {
-                const capitalized = query.charAt(0).toUpperCase() + query.slice(1);
-                captionsList = [
-                    `Step into the world of ${capitalized}! Unleash your true power with this epic edit. ⚡🔥\n#${capitalized.replace(/\s+/g, '')} #AnimeEdits #ViralReels`,
-                    `Limits exist only for those who refuse to transcend them. #${capitalized.replace(/\s+/g, '')} #AnimeQuotes #EpicMoments`,
-                    `The true battle begins when despair tries to take over. Stay strong! ⚔️💫\n#${capitalized.replace(/\s+/g, '')} #AnimeStatus #ReelsTrend`
-                ];
-            }
+            let captionsList = matchedKey ? animeCaptionsDb[matchedKey] : [
+                `Step into the world of ${query}! Unleash your power. ⚡🔥\n#${query.replace(/\s+/g, '')} #AnimeEdits`,
+                `Limits exist only for those who refuse to transcend them. #${query.replace(/\s+/g, '')} #Quotes`
+            ];
 
             let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
-            let selectedCaptions = shuffled.slice(0, Math.min(3, shuffled.length));
-
             container.innerHTML = "";
-            selectedCaptions.forEach((caption) => {
+            shuffled.slice(0, 3).forEach((caption) => {
                 const card = document.createElement("div");
                 card.className = "caption-card";
-                const formattedText = caption.replace(/\n/g, '<br>');
                 card.innerHTML = `
-                    <div class="caption-text">${formattedText}</div>
+                    <div class="caption-text">${caption.replace(/\n/g, '<br>')}</div>
                     <button class="copy-btn" onclick="copyCaption(this, \`${encodeURIComponent(caption)}\`)">Copy</button>
                 `;
                 container.appendChild(card);
@@ -436,17 +635,13 @@
 
         function loadCaptions(defaultKey) {
             const container = document.getElementById("captionsContainer");
-            let captionsList = animeCaptionsDb[defaultKey] || animeCaptionsDb["gojo"];
-            let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
-            let selectedCaptions = shuffled.slice(0, 3);
-
+            let captionsList = animeCaptionsDb[defaultKey];
             container.innerHTML = "";
-            selectedCaptions.forEach((caption) => {
+            captionsList.forEach((caption) => {
                 const card = document.createElement("div");
                 card.className = "caption-card";
-                const formattedText = caption.replace(/\n/g, '<br>');
                 card.innerHTML = `
-                    <div class="caption-text">${formattedText}</div>
+                    <div class="caption-text">${caption.replace(/\n/g, '<br>')}</div>
                     <button class="copy-btn" onclick="copyCaption(this, \`${encodeURIComponent(caption)}\`)">Copy</button>
                 `;
                 container.appendChild(card);
@@ -454,8 +649,7 @@
         }
 
         function copyCaption(button, encodedText) {
-            const text = decodeURIComponent(encodedText);
-            navigator.clipboard.writeText(text).then(() => {
+            navigator.clipboard.writeText(decodeURIComponent(encodedText)).then(() => {
                 button.textContent = "Copied! ✨";
                 button.classList.add("copied");
                 setTimeout(() => {
@@ -471,4 +665,3 @@
     </script>
 </body>
 </html>
-                                        
