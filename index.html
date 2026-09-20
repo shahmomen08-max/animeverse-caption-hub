@@ -1,244 +1,312 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeVerse Caption Hub</title>
-    <meta name="google-site-verification" content="EjdUCZKNVLILAtDMl1qq4mnISi0szkAfCLE_eL02L5U" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>AnimeVerse Caption Hub - Best Anime Quotes & Social Media Captions</title>
+    <meta name="description" content="Generate epic anime captions, quotes, and hashtags for Gojo, Sukuna, Naruto, Zoro, Eren, and more. Level up your social media with viral anime content!">
+    <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions, One Piece quotes">
+    <meta name="author" content="Momen Shah">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="AnimeVerse Caption Hub - Viral Anime Quotes">
+    <meta property="og:description" content="Get viral anime captions and quotes instantly for your edits and reels. No repeats, fresh daily!">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts & Styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #0f1020;
+            color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        header {
+            background: rgba(15, 16, 32, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: #ffffff;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            width: 100%;
+            flex: 1;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .hero p {
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        .selector-box {
+            background: #1e1b4b;
+            border: 1px solid #312e81;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .selector-box label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #c7d2fe;
+        }
+        select {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem 1rem;
+            background: #0f1020;
+            color: #ffffff;
+            border: 1px solid #4338ca;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+        }
+        .results-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+        .caption-card {
+            background: #171833;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s;
+        }
+        .caption-card:hover {
+            border-color: #8b5cf6;
+        }
+        .caption-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e5e7eb;
+            flex: 1;
+            padding-right: 1rem;
+            white-space: pre-line;
+        }
+        .copy-btn {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .copy-btn:hover {
+            background: #6d28d9;
+        }
+        .copy-btn.copied {
+            background: #10b981;
+        }
+        .web-stories-teaser {
+            background: linear-gradient(135deg, #1e1b4b, #312e81);
+            border: 1px solid #4338ca;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .web-stories-teaser h3 {
+            color: #f472b6;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .web-stories-teaser p {
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(15, 16, 32, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+        footer span {
+            color: #f472b6;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">AnimeVerse Caption Hub</h1>
-                    <p class="text-xs text-slate-400">Level up your social media with epic anime quotes</p>
-                </div>
-            </a>
-            <nav class="flex items-center gap-2 text-sm">
-                <a href="#generator" class="px-4 py-2 rounded-lg bg-indigo-600/10 hover:bg-indigo-600/20 text-indigo-400 border border-indigo-500/20 transition-colors font-medium">Generator</a>
-                <button onclick="openModal('privacyModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">Privacy</button>
-                <button onclick="openModal('aboutModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">About</button>
-                <button onclick="openModal('contactModal')" class="px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">Contact</button>
-            </nav>
-        </div>
+    <header>
+        <div class="logo">⚡ AnimeVerse Caption Hub</div>
+        <nav>
+            <a href="#" class="active">Generator</a>
+            <a href="#">Web Stories</a>
+            <a href="#">About</a>
+        </nav>
     </header>
 
-    <!-- Main Content Area -->
-    <main id="generator" class="flex-grow max-w-4xl mx-auto px-4 py-10 w-full flex flex-col items-center">
-        <!-- Hero Section -->
-        <div class="text-center mb-10 max-w-2xl">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-4">
-                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span> V2.0 Ultimate Anime Engine
-            </span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-                Generate Epic <span class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Anime Captions</span>
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base">
-                Type your favorite anime, character, or vibe below and instantly generate viral captions for TikTok, Instagram Reels, and Shorts.
-            </p>
+    <main>
+        <div class="hero">
+            <h1>Level Up Your Social Media</h1>
+            <p>Generate fresh, non-repeating viral anime captions & hashtags instantly.</p>
         </div>
 
-        <!-- Generator Box -->
-        <div class="w-full bg-slate-900/80 border border-slate-800/80 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden mb-12">
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="space-y-4">
-                <label for="animeInput" class="block text-sm font-medium text-slate-300">
-                    Enter Anime, Character, or Vibe (e.g., <span class="text-indigo-400 font-semibold">Gojo Satoru, Solo Leveling, Zoro</span>)
-                </label>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <div class="relative flex-grow">
-                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
-                            <i class="fa-solid fa-fire text-indigo-500"></i>
-                        </span>
-                        <input type="text" id="animeInput" placeholder="Type anime character, mood, or show..." 
-                            class="w-full pl-11 pr-4 py-3.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all text-sm">
-                    </div>
-                    <button onclick="generateCaptions()" 
-                        class="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/25 transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm sm:w-auto cursor-pointer">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Captions
-                    </button>
-                </div>
-            </div>
+        <div class="selector-box">
+            <label for="characterSelect">Choose Your Anime Character:</label>
+            <select id="characterSelect" onchange="loadCaptions()">
+                <option value="gojo">Gojo Satoru (Jujutsu Kaisen)</option>
+                <option value="sukuna">Ryomen Sukuna (Jujutsu Kaisen)</option>
+                <option value="zoro">Roronoa Zoro (One Piece)</option>
+                <option value="eren">Eren Yeager (Attack on Titan)</option>
+                <option value="naruto">Naruto Uzumaki (Naruto)</option>
+            </select>
+        </div>
 
-            <!-- Quick Suggestions Tags -->
-            <div class="mt-6 flex flex-wrap items-center gap-2">
-                <span class="text-xs text-slate-500 font-medium mr-1">Trending:</span>
-                <button onclick="setQuery('Gojo Satoru')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Gojo Satoru</button>
-                <button onclick="setQuery('Ryomen Sukuna')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Sukuna</button>
-                <button onclick="setQuery('Roronoa Zoro')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Zoro</button>
-                <button onclick="setQuery('Sung Jin-Woo')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Sung Jin-Woo</button>
-                <button onclick="setQuery('Eren Yeager')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-colors cursor-pointer">Eren Yeager</button>
+        <div class="results-section">
+            <h2>✨ Generated Captions (Click to Copy)</h2>
+            <div id="captionsContainer">
+                <!-- Dynamic Random Captions will load here -->
             </div>
         </div>
 
-        <!-- Output Results Section -->
-        <div id="resultsContainer" class="w-full space-y-4 hidden">
-            <div class="flex items-center justify-between">
-                <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-indigo-400"></i> Generated Captions
-                </h3>
-                <span class="text-xs text-slate-400">Click any card to copy</span>
-            </div>
-            <div id="captionsList" class="grid gap-4">
-                <!-- Dynamic cards will appear here -->
-            </div>
+        <div class="web-stories-teaser">
+            <h3>🔥 Coming Soon: Visual Anime Web Stories</h3>
+            <p>Swipe through high-speed visual quotes designed to blow up on Google Discover and Instagram Reels!</p>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800/80 bg-slate-900/30 py-6 mt-12 text-center text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 AnimeVerse Caption Hub. All rights reserved.</p>
-            <div class="flex items-center gap-4">
-                <button onclick="openModal('privacyModal')" class="hover:text-slate-400 transition-colors cursor-pointer">Privacy Policy</button>
-                <button onclick="openModal('aboutModal')" class="hover:text-slate-400 transition-colors cursor-pointer">About Us</button>
-                <button onclick="openModal('contactModal')" class="hover:text-slate-400 transition-colors cursor-pointer">Contact</button>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 AnimeVerse Caption Hub. Built for <span>Viral Growth</span>.</p>
     </footer>
 
-    <!-- Modals for Privacy, About, Contact -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <h3 class="text-xl font-bold text-white">Privacy Policy</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">At AnimeVerse Caption Hub, your privacy is our priority. We use standard log files and cookies to improve your user experience and prepare for future ad integrations.</p>
-            <button onclick="closeModal('privacyModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
-        </div>
-    </div>
-
-    <div id="aboutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <h3 class="text-xl font-bold text-white">About Us</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">AnimeVerse Caption Hub is your ultimate destination for epic anime quotes and viral social media captions for TikTok, Reels, and Shorts with a single click.</p>
-            <button onclick="closeModal('aboutModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
-        </div>
-    </div>
-
-    <div id="contactModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <h3 class="text-xl font-bold text-white">Contact Us</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">If you have any questions, suggestions, or feedback regarding our caption generator tool, feel free to reach out to us via email.</p>
-            <p class="text-xs text-indigo-400 font-semibold">Email: <a href="mailto:shahmomen08@gmail.com" class="underline">shahmomen08@gmail.com</a></p>
-            <button onclick="closeModal('contactModal')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl cursor-pointer">Close</button>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic -->
     <script>
-        const captionDatabase = {
-            "gojo satoru": [
-                "Throughout heaven and earth, I alone am the honored one. 🔵✨ #GojoSatoru #JujutsuKaisen #AnimeEdits",
-                "You're weak because you lack enough hatred... nah, I'm just too strong. 😎🔥 #Gojo #DomainExpansion",
-                "Don't worry, I'm the strongest. 🕶️⚡ #JJK #GojoEdit #AnimeReels"
+        // Master Database with multiple variations to ensure unique random results every time
+        const animeCaptionsDb = {
+            "gojo": [
+                "Throughout heaven and earth, I alone am the honored one. 🔵✨\n#GojoSatoru #JujutsuKaisen #AnimeEdits",
+                "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥\n#Gojo #DomainExpansion #JJK",
+                "Don't worry, I'm the strongest. 🕶️⚡\n#GojoEdit #AnimeReels #JujutsuKaisen",
+                "It's not about whether I can, I have to do it. 🌌\n#GojoSatoru #AnimeQuotes #Goat",
+                "The process of learning what it means to be strong is lonely. 💫\n#GojoSatoru #JJKEdit"
             ],
-            "ryomen sukuna": [
-                "Stand proud, you are strong. But against the King of Curses? Fatality. 🩸👑 #Sukuna #JJK #KingOfCurses",
-                "Where is the fun if nobody can even entertain me? 😈🔪 #RyomenSukuna #AnimeQuotes",
-                "Know your place, mere insects. ⚡🔥 #SukunaEdit #AnimeVillain"
+            "sukuna": [
+                "Stand proud, you are strong. 🔥👑\n#Sukuna #JujutsuKaisen #KingOfCurses",
+                "Know your place, mere insects. The king has arrived. ⚡😈\n#RyomenSukuna #JJKManga",
+                "Fools who don't know true strength will always perish first. 🩸\n#SukunaEdit #AnimeVillain",
+                "A mere nuisance. Let's see how long you survive. 💀🔥\n#SukunaRyomen #JujutsuKaisenEdits"
             ],
-            "roronoa zoro": [
-                "Nothing happened. 🗡️🩸 #Zoro #OnePiece #KingOfHell",
-                "When you decide to go to sea, you fight against your own destiny! 🏴‍☠️⚔️ #RoronoaZoro #AnimeMotivation",
-                "Scars on the back are a swordsman's shame. 🛡️🔥 #ZoroEdit #AnimeEdits"
+            "zoro": [
+                "Nothing happened. 🗡️🩸\n#RoronoaZoro #OnePiece #ZoroEpicMoment",
+                "When the world forces you to be a warrior, you draw your swords. ⚔️🔥\n#Zoro #KingOfHell #OnePieceEdits",
+                "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes #AnimeMotivation #StrawHats"
             ],
-            "sung jin-woo": [
-                "Arise. 🌑👑 #SoloLeveling #SungJinWoo #ShadowMonarch",
-                "The weak don't have the right to choose how they die. ⚔️⚡ #JinWoo #AnimeReels",
-                "I alone level up while the world sleeps. 🛡️🔥 #SoloLevelingEdit"
+            "eren": [
+                "If you don't fight, you can't win. Fight! 🕊️🔥\n#ErenYeager #AttackOnTitan #AOT",
+                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️\n#Eren #Freedom #ShingekiNoKyojin",
+                "Tatakae! Tatakae! 🩸\n#ErenYeagerEdit #AOTFinalSeason #AnimeCaptions"
             ],
-            "eren yeager": [
-                "If you don't fight, you can't win. Fight! Fight! 🕊️🔥 #ErenYeager #AttackOnTitan #AOT",
-                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️ #Tatakae #ErenEdit",
-                "Freedom isn't given, it's taken. 🔓🩸 #AOTEdits #ShingekiNoKyojin"
+            "naruto": [
+                "Hard work is worthless for those that don't believe in themselves. 🍥⚡\n#NarutoUzumaki #NarutoQuotes #Hokage",
+                "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden #AnimeMotivation #NinjaWay",
+                "Believe it! Dattebayo! 🌟\n#NarutoEdit #UzumakiNaruto #AnimeReels"
             ]
         };
 
-        function setQuery(val) {
-            document.getElementById('animeInput').value = val;
-            generateCaptions();
-        }
-
-        function generateCaptions() {
-            const query = document.getElementById('animeInput').value.trim().toLowerCase();
-            const resultsContainer = document.getElementById('resultsContainer');
-            const captionsList = document.getElementById('captionsList');
-
-            if (!query) {
-                alert('Please type an anime or character name first!');
-                return;
-            }
-
-            captionsList.innerHTML = '';
+        function loadCaptions() {
+            const selectElement = document.getElementById("characterSelect");
+            const selectedKey = selectElement.value;
+            const container = document.getElementById("captionsContainer");
             
-            let matchedCaptions = [];
-            for (let key in captionDatabase) {
-                if (query.includes(key) || key.includes(query)) {
-                    matchedCaptions = matchedCaptions.concat(captionDatabase[key]);
-                }
-            }
-
-            if (matchedCaptions.length === 0) {
-                matchedCaptions = [
-                    `Living life in my own anime arc. ✨🔥 #${query.replace(/\s+/g, '')} #AnimeVibes`,
-                    `Limits exist only for those who accept them. Leveling up daily! ⚡🚀 #${query.replace(/\s+/g, '')} #AnimeEdit`,
-                    `The protagonist energy is unmatched right now. 🌌⚔️ #${query.replace(/\s+/g, '')} #Reels`
-                ];
-            }
-
-        resultsContainer.classList.remove('hidden');
-
-            matchedCaptions.forEach((cap, index) => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-xl p-4 flex items-center justify-between gap-4 transition-all group cursor-pointer";
-                card.onclick = () => copyToClipboard(cap, card);
+            let captionsList = animeCaptionsDb[selectedKey] || animeCaptionsDb["gojo"];
+            
+            // RANDOMIZATION LOGIC: Shuffle array using Math.random() so captions change on every load / selection
+            let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
+            
+            // Pick up to 3 unique random captions
+            let selectedCaptions = shuffled.slice(0, 3);
+            
+            // Clear previous results and render new ones
+            container.innerHTML = "";
+            
+            selectedCaptions.forEach((caption, index) => {
+                const card = document.createElement("div");
+                card.className = "caption-card";
+                
+                // Format text with line breaks
+                const formattedText = caption.replace(/\n/g, '<br>');
                 
                 card.innerHTML = `
-                    <div class="flex items-start gap-3">
-                        <span class="w-7 h-7 rounded-lg bg-indigo-600/10 text-indigo-400 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5 border border-indigo-500/20">${index + 1}</span>
-                        <p class="text-sm text-slate-200">${cap}</p>
-                    </div>
-                    <button class="px-3 py-2 rounded-lg bg-slate-800 group-hover:bg-indigo-600 text-slate-300 group-hover:text-white text-xs font-medium transition-colors flex items-center gap-1.5 flex-shrink-0 cursor-pointer">
-                        <i class="fa-regular fa-copy"></i> Copy
-                    </button>
+                    <div class="caption-text">${formattedText}</div>
+                    <button class="copy-btn" onclick="copyCaption(this, \`${encodeURIComponent(caption)}\`)">Copy</button>
                 `;
-                captionsList.appendChild(card);
+                container.appendChild(card);
             });
         }
 
-        function copyToClipboard(text, cardElement) {
+        function copyCaption(button, encodedText) {
+            const text = decodeURIComponent(encodedText);
             navigator.clipboard.writeText(text).then(() => {
-                const btn = cardElement.querySelector('button');
-                const originalHTML = btn.innerHTML;
-                btn.innerHTML = `<i class="fa-solid fa-check text-emerald-400"></i> Copied!`;
-                btn.classList.add('bg-emerald-950/50', 'text-emerald-300');
-                
+                button.textContent = "Copied! ✨";
+                button.classList.add("copied");
                 setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.classList.remove('bg-emerald-950/50', 'text-emerald-300');
+                    button.textContent = "Copy";
+                    button.classList.remove("copied");
                 }, 2000);
             });
         }
 
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-        }
+        // Run on page load to generate initial random captions
+        window.onload = function() {
+            loadCaptions();
+        };
     </script>
 </body>
-</html>
+    </html>
+    
