@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,9 @@
     <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions">
     <meta name="author" content="Momen Shah">
     
+    <!-- Google Search Console Verification Placeholder (Aapka verified code safe hai) -->
+    <!-- <meta name="google-site-verification" content="Aapka_Verify_Code_Yahan_Aayega" /> -->
+
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="AnimeVerse Caption Hub - Viral Anime Quotes">
     <meta property="og:description" content="Get viral anime captions and quotes instantly for any anime character.">
@@ -270,7 +273,7 @@
         <div id="section-about" class="page-section">
             <div class="static-page-content">
                 <h2>About AnimeVerse Caption Hub</h2>
-                <p>AnimeVerse Caption Hub is the ultimate platform built for anime creators, editors, and social media enthusiasts. Whether you are running an anime reels page on Instagram, TikTok, or YouTube Shorts, finding the right caption is essential for viral reach.</p>
+                <p>AnimeVerse Caption Hub is the ultimate platform built by Momen Shah for anime creators, editors, and social media enthusiasts. Whether you are running an anime reels page on Instagram, TikTok, or YouTube Shorts, finding the right caption is essential for viral reach.</p>
                 <p>Our smart randomizer engine ensures that every search delivers fresh, engaging, and non-repeating captions complete with trending hashtags.</p>
             </div>
         </div>
@@ -290,13 +293,13 @@
             <div class="static-page-content">
                 <h2>Contact Us</h2>
                 <p>If you have any questions, suggestions, or copyright concerns regarding our captions or website features, feel free to reach out to us.</p>
-                <p>You can contact the administration directly via email at: <strong>support@animeversehub.com</strong> or reach out through our community channels.</p>
+                <p>You can contact the administration directly via email at: <strong>shahmomen08@gmail.com</strong></p>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 AnimeVerse Caption Hub. Built for <span>Viral Growth</span>.</p>
+        <p>&copy; 2026 AnimeVerse Caption Hub. Built for <span>Viral Growth</span> by Momen Shah.</p>
     </footer>
 
     <script>
@@ -328,7 +331,7 @@
                 "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden #AnimeMotivation"
             ],
             "kaneki": [
-                "What's wrong? Is it so strange to eat a human?  Ghoul mode activated. 🩸🖤\n#KenKaneki #TokyoGhoul #KanekiEdit",
+                "What's wrong? Is it so strange to eat a human? Ghoul mode activated. 🩸🖤\n#KenKaneki #TokyoGhoul #KanekiEdit",
                 "I'm not the protagonist of a novel or anything... I'm just a college student who likes to read. ☕📖\n#TokyoGhoul #KanekiKen"
             ],
             "guts": [
@@ -338,15 +341,10 @@
         };
 
         function switchTab(tabId) {
-            // Hide all sections
             document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-            // Remove active class from all nav links
             document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
             
-            // Show target section
             document.getElementById('section-' + tabId).classList.add('active');
-            
-            // Highlight nav link if exists
             const activeNav = document.getElementById('nav-' + tabId);
             if(activeNav) activeNav.classList.add('active');
             
@@ -365,20 +363,18 @@
             const heading = document.getElementById("resultHeading");
             
             if (!query) {
-                loadCaptions("gojo"); // Default fallback
+                loadCaptions("gojo");
                 return;
             }
 
             heading.textContent = `✨ Captions for "${document.getElementById("animeSearchInput").value}"`;
 
-            // Find matching key or generate intelligent dynamic results if not directly in DB
             let matchedKey = Object.keys(animeCaptionsDb).find(key => query.includes(key));
             
             let captionsList = [];
             if (matchedKey) {
                 captionsList = animeCaptionsDb[matchedKey];
             } else {
-                // Smart fallback for any anime searched by the user (Dynamic generation so EVERY anime works!)
                 const capitalized = query.charAt(0).toUpperCase() + query.slice(1);
                 captionsList = [
                     `Step into the world of ${capitalized}! Unleash your true power with this epic edit. ⚡🔥\n#${capitalized.replace(/\s+/g, '')} #AnimeEdits #ViralReels`,
@@ -387,7 +383,6 @@
                 ];
             }
 
-            // Randomize and slice 3 unique items
             let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
             let selectedCaptions = shuffled.slice(0, Math.min(3, shuffled.length));
 
@@ -435,11 +430,10 @@
             });
         }
 
-        // Run initial load on startup
         window.onload = function() {
             loadCaptions("gojo");
         };
     </script>
 </body>
-</html>
-                               
+ </html>
+         
