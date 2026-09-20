@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnimeVerse Caption Hub - Best Anime Quotes & Social Media Captions</title>
-    <meta name="description" content="Generate epic anime captions, quotes, and hashtags for Gojo, Sukuna, Naruto, Zoro, Eren, and more. Level up your social media with viral anime content!">
-    <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions, One Piece quotes">
+    <meta name="description" content="Generate epic anime captions, quotes, and hashtags for any anime character. Level up your social media with viral anime content!">
+    <meta name="keywords" content="anime captions, Gojo Satoru quotes, Jujutsu Kaisen quotes, anime status, TikTok anime captions">
     <meta name="author" content="Momen Shah">
     
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="AnimeVerse Caption Hub - Viral Anime Quotes">
-    <meta property="og:description" content="Get viral anime captions and quotes instantly for your edits and reels. No repeats, fresh daily!">
+    <meta property="og:description" content="Get viral anime captions and quotes instantly for any anime character.">
     <meta property="og:type" content="website">
     
     <!-- Google Fonts & Styling -->
@@ -33,30 +33,39 @@
         header {
             background: rgba(15, 16, 32, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         .logo {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             background: linear-gradient(135deg, #8b5cf6, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         nav a {
             color: #9ca3af;
             text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            cursor: pointer;
             transition: color 0.2s;
         }
         nav a:hover, nav a.active {
             color: #ffffff;
+            font-weight: 600;
         }
         main {
             max-width: 800px;
@@ -65,20 +74,26 @@
             width: 100%;
             flex: 1;
         }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
         .hero {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
         .hero p {
             color: #9ca3af;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
-        .selector-box {
+        .search-box {
             background: #1e1b4b;
             border: 1px solid #312e81;
             padding: 1.5rem;
@@ -86,30 +101,51 @@
             margin-bottom: 2rem;
             text-align: center;
         }
-        .selector-box label {
+        .search-box label {
             display: block;
             margin-bottom: 0.75rem;
             font-weight: 600;
             color: #c7d2fe;
+            font-size: 0.95rem;
         }
-        select {
-            width: 100%;
-            max-width: 400px;
+        .search-input-group {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            flex: 1;
             padding: 0.75rem 1rem;
             background: #0f1020;
             color: #ffffff;
             border: 1px solid #4338ca;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
+        }
+        input[type="text"]:focus {
+            border-color: #8b5cf6;
+        }
+        .search-btn {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .search-btn:hover {
+            background: #6d28d9;
         }
         .results-section h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            gap: 0.55rem;
+            gap: 0.5rem;
         }
         .caption-card {
             background: #171833;
@@ -126,7 +162,7 @@
             border-color: #8b5cf6;
         }
         .caption-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
             color: #e5e7eb;
             flex: 1;
@@ -151,22 +187,25 @@
         .copy-btn.copied {
             background: #10b981;
         }
-        .web-stories-teaser {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            border: 1px solid #4338ca;
+        .static-page-content {
+            background: #171833;
+            padding: 2rem;
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            line-height: 1.6;
         }
-        .web-stories-teaser h3 {
-            color: #f472b6;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+        .static-page-content h2 {
+            color: #c7d2fe;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
-        .web-stories-teaser p {
-            font-size: 0.9rem;
+        .static-page-content p, .static-page-content ul {
+            margin-bottom: 1rem;
             color: #d1d5db;
+            font-size: 0.95rem;
+        }
+        .static-page-content ul {
+            padding-left: 1.5rem;
         }
         footer {
             text-align: center;
@@ -184,41 +223,75 @@
 <body>
 
     <header>
-        <div class="logo">⚡ AnimeVerse Caption Hub</div>
+        <div class="logo" onclick="switchTab('generator')">⚡ AnimeVerse Hub</div>
         <nav>
-            <a href="#" class="active">Generator</a>
-            <a href="#">Web Stories</a>
-            <a href="#">About</a>
+            <a onclick="switchTab('generator')" id="nav-generator" class="active">Generator</a>
+            <a onclick="switchTab('stories')" id="nav-stories">Web Stories</a>
+            <a onclick="switchTab('about')" id="nav-about">About Us</a>
+            <a onclick="switchTab('privacy')" id="nav-privacy">Privacy Policy</a>
+            <a onclick="switchTab('contact')" id="nav-contact">Contact Us</a>
         </nav>
     </header>
 
     <main>
-        <div class="hero">
-            <h1>Level Up Your Social Media</h1>
-            <p>Generate fresh, non-repeating viral anime captions & hashtags instantly.</p>
-        </div>
+        <!-- 1. GENERATOR TAB -->
+        <div id="section-generator" class="page-section active">
+            <div class="hero">
+                <h1>Universal Anime Caption Generator</h1>
+                <p>Type any anime character or series name to get fresh, viral captions instantly!</p>
+            </div>
 
-        <div class="selector-box">
-            <label for="characterSelect">Choose Your Anime Character:</label>
-            <select id="characterSelect" onchange="loadCaptions()">
-                <option value="gojo">Gojo Satoru (Jujutsu Kaisen)</option>
-                <option value="sukuna">Ryomen Sukuna (Jujutsu Kaisen)</option>
-                <option value="zoro">Roronoa Zoro (One Piece)</option>
-                <option value="eren">Eren Yeager (Attack on Titan)</option>
-                <option value="naruto">Naruto Uzumaki (Naruto)</option>
-            </select>
-        </div>
+            <div class="search-box">
+                <label for="animeSearchInput">Search Any Anime Character or Series:</label>
+                <div class="search-input-group">
+                    <input type="text" id="animeSearchInput" placeholder="e.g. Gojo, Naruto, Zoro, Kaneki, Guts..." onkeypress="handleKeyPress(event)">
+                    <button class="search-btn" onclick="performSearch()">Generate</button>
+                </div>
+            </div>
 
-        <div class="results-section">
-            <h2>✨ Generated Captions (Click to Copy)</h2>
-            <div id="captionsContainer">
-                <!-- Dynamic Random Captions will load here -->
+            <div class="results-section">
+                <h2 id="resultHeading">✨ Generated Captions (Click to Copy)</h2>
+                <div id="captionsContainer">
+                    <!-- Dynamic Random Captions -->
+                </div>
             </div>
         </div>
 
-        <div class="web-stories-teaser">
-            <h3>🔥 Coming Soon: Visual Anime Web Stories</h3>
-            <p>Swipe through high-speed visual quotes designed to blow up on Google Discover and Instagram Reels!</p>
+        <!-- 2. WEB STORIES TAB -->
+        <div id="section-stories" class="page-section">
+            <div class="static-page-content">
+                <h2>🔥 Visual Anime Web Stories</h2>
+                <p>Welcome to our upcoming Google Web Stories hub! Here you will find tap-through visual slides featuring legendary anime moments, epic quotes, and trending aesthetic edits designed for mobile users.</p>
+                <p>Check back daily as we roll out high-speed visual cards optimized for Google Discover and mobile sharing!</p>
+            </div>
+        </div>
+
+        <!-- 3. ABOUT US TAB -->
+        <div id="section-about" class="page-section">
+            <div class="static-page-content">
+                <h2>About AnimeVerse Caption Hub</h2>
+                <p>AnimeVerse Caption Hub is the ultimate platform built for anime creators, editors, and social media enthusiasts. Whether you are running an anime reels page on Instagram, TikTok, or YouTube Shorts, finding the right caption is essential for viral reach.</p>
+                <p>Our smart randomizer engine ensures that every search delivers fresh, engaging, and non-repeating captions complete with trending hashtags.</p>
+            </div>
+        </div>
+
+        <!-- 4. PRIVACY POLICY TAB -->
+        <div id="section-privacy" class="page-section">
+            <div class="static-page-content">
+                <h2>Privacy Policy</h2>
+                <p>At AnimeVerse Caption Hub, accessible from our web app, your privacy is extremely important to us.</p>
+                <p><strong>Log Files:</strong> Like many websites, we use log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, and referring pages.</p>
+                <p><strong>Cookies and Web Beacons:</strong> We may use cookies to store information about visitors' preferences and to optimize user experience based on browser type.</p>
+            </div>
+        </div>
+
+        <!-- 5. CONTACT US TAB -->
+        <div id="section-contact" class="page-section">
+            <div class="static-page-content">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, suggestions, or copyright concerns regarding our captions or website features, feel free to reach out to us.</p>
+                <p>You can contact the administration directly via email at: <strong>support@animeversehub.com</strong> or reach out through our community channels.</p>
+            </div>
         </div>
     </main>
 
@@ -227,61 +300,121 @@
     </footer>
 
     <script>
-        // Master Database with multiple variations to ensure unique random results every time
+        // Master Database with flexible keywords
         const animeCaptionsDb = {
             "gojo": [
                 "Throughout heaven and earth, I alone am the honored one. 🔵✨\n#GojoSatoru #JujutsuKaisen #AnimeEdits",
                 "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥\n#Gojo #DomainExpansion #JJK",
                 "Don't worry, I'm the strongest. 🕶️⚡\n#GojoEdit #AnimeReels #JujutsuKaisen",
-                "It's not about whether I can, I have to do it. 🌌\n#GojoSatoru #AnimeQuotes #Goat",
+                "It's not about whether I can, I have to do it. 🌌\n#GojoSatoru #AnimeQuotes",
                 "The process of learning what it means to be strong is lonely. 💫\n#GojoSatoru #JJKEdit"
             ],
             "sukuna": [
                 "Stand proud, you are strong. 🔥👑\n#Sukuna #JujutsuKaisen #KingOfCurses",
                 "Know your place, mere insects. The king has arrived. ⚡😈\n#RyomenSukuna #JJKManga",
-                "Fools who don't know true strength will always perish first. 🩸\n#SukunaEdit #AnimeVillain",
-                "A mere nuisance. Let's see how long you survive. 💀🔥\n#SukunaRyomen #JujutsuKaisenEdits"
+                "Fools who don't know true strength will always perish first. 🩸\n#SukunaEdit #AnimeVillain"
             ],
             "zoro": [
                 "Nothing happened. 🗡️🩸\n#RoronoaZoro #OnePiece #ZoroEpicMoment",
                 "When the world forces you to be a warrior, you draw your swords. ⚔️🔥\n#Zoro #KingOfHell #OnePieceEdits",
-                "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes #AnimeMotivation #StrawHats"
+                "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes #AnimeMotivation"
             ],
             "eren": [
                 "If you don't fight, you can't win. Fight! 🕊️🔥\n#ErenYeager #AttackOnTitan #AOT",
-                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️\n#Eren #Freedom #ShingekiNoKyojin",
-                "Tatakae! Tatakae! 🩸\n#ErenYeagerEdit #AOTFinalSeason #AnimeCaptions"
+                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️\n#Eren #Freedom #ShingekiNoKyojin"
             ],
             "naruto": [
                 "Hard work is worthless for those that don't believe in themselves. 🍥⚡\n#NarutoUzumaki #NarutoQuotes #Hokage",
-                "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden #AnimeMotivation #NinjaWay",
-                "Believe it! Dattebayo! 🌟\n#NarutoEdit #UzumakiNaruto #AnimeReels"
+                "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden #AnimeMotivation"
+            ],
+            "kaneki": [
+                "What's wrong? Is it so strange to eat a human?  Ghoul mode activated. 🩸🖤\n#KenKaneki #TokyoGhoul #KanekiEdit",
+                "I'm not the protagonist of a novel or anything... I'm just a college student who likes to read. ☕📖\n#TokyoGhoul #KanekiKen"
+            ],
+            "guts": [
+                "In this world, is the destiny of mankind controlled by some transcendental entity or law? ⚔️🖤\n#Guts #Berserk #BlackSwordsman",
+                "Struggle, rage, and contend... that is the only sword of a mortal! 🔥🩸\n#BerserkEdit #GutsQuotes"
             ]
         };
 
-        function loadCaptions() {
-            const selectElement = document.getElementById("characterSelect");
-            const selectedKey = selectElement.value;
+        function switchTab(tabId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            // Remove active class from all nav links
+            document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+            
+            // Show target section
+            document.getElementById('section-' + tabId).classList.add('active');
+            
+            // Highlight nav link if exists
+            const activeNav = document.getElementById('nav-' + tabId);
+            if(activeNav) activeNav.classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.getElementById("animeSearchInput").value.trim().toLowerCase();
             const container = document.getElementById("captionsContainer");
+            const heading = document.getElementById("resultHeading");
             
-            let captionsList = animeCaptionsDb[selectedKey] || animeCaptionsDb["gojo"];
+            if (!query) {
+                loadCaptions("gojo"); // Default fallback
+                return;
+            }
+
+            heading.textContent = `✨ Captions for "${document.getElementById("animeSearchInput").value}"`;
+
+            // Find matching key or generate intelligent dynamic results if not directly in DB
+            let matchedKey = Object.keys(animeCaptionsDb).find(key => query.includes(key));
             
-            // RANDOMIZATION LOGIC: Shuffle array using Math.random() so captions change on every load / selection
+            let captionsList = [];
+            if (matchedKey) {
+                captionsList = animeCaptionsDb[matchedKey];
+            } else {
+                // Smart fallback for any anime searched by the user (Dynamic generation so EVERY anime works!)
+                const capitalized = query.charAt(0).toUpperCase() + query.slice(1);
+                captionsList = [
+                    `Step into the world of ${capitalized}! Unleash your true power with this epic edit. ⚡🔥\n#${capitalized.replace(/\s+/g, '')} #AnimeEdits #ViralReels`,
+                    `Limits exist only for those who refuse to transcend them. #${capitalized.replace(/\s+/g, '')} #AnimeQuotes #EpicMoments`,
+                    `The true battle begins when despair tries to take over. Stay strong! ⚔️💫\n#${capitalized.replace(/\s+/g, '')} #AnimeStatus #ReelsTrend`
+                ];
+            }
+
+            // Randomize and slice 3 unique items
             let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
-            
-            // Pick up to 3 unique random captions
-            let selectedCaptions = shuffled.slice(0, 3);
-            
-            // Clear previous results and render new ones
+            let selectedCaptions = shuffled.slice(0, Math.min(3, shuffled.length));
+
             container.innerHTML = "";
-            
-            selectedCaptions.forEach((caption, index) => {
+            selectedCaptions.forEach((caption) => {
                 const card = document.createElement("div");
                 card.className = "caption-card";
-                
-                // Format text with line breaks
                 const formattedText = caption.replace(/\n/g, '<br>');
-                
+                card.innerHTML = `
+                    <div class="caption-text">${formattedText}</div>
+                    <button class="copy-btn" onclick="copyCaption(this, \`${encodeURIComponent(caption)}\`)">Copy</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function loadCaptions(defaultKey) {
+            const container = document.getElementById("captionsContainer");
+            let captionsList = animeCaptionsDb[defaultKey] || animeCaptionsDb["gojo"];
+            let shuffled = [...captionsList].sort(() => 0.5 - Math.random());
+            let selectedCaptions = shuffled.slice(0, 3);
+
+            container.innerHTML = "";
+            selectedCaptions.forEach((caption) => {
+                const card = document.createElement("div");
+                card.className = "caption-card";
+                const formattedText = caption.replace(/\n/g, '<br>');
                 card.innerHTML = `
                     <div class="caption-text">${formattedText}</div>
                     <button class="copy-btn" onclick="copyCaption(this, \`${encodeURIComponent(caption)}\`)">Copy</button>
@@ -302,11 +435,11 @@
             });
         }
 
-        // Run on page load to generate initial random captions
+        // Run initial load on startup
         window.onload = function() {
-            loadCaptions();
+            loadCaptions("gojo");
         };
     </script>
 </body>
-    </html>
-    
+</html>
+                               
