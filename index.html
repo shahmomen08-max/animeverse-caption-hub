@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+           <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -391,21 +391,10 @@
         <div id="section-stories" class="page-section">
             <div class="static-page-content" style="margin-bottom: 1.5rem;">
                 <h2>🔥 Google Web Stories Hub</h2>
-                <p>Explore our high-speed visual anime cards designed to explode on Google Discover. Tap below to launch immersive story slides:</p>
+                <p>Explore our high-speed visual anime cards designed to explode on Google Discover. Updated with 3 fresh daily featured characters!</p>
             </div>
-            <div class="stories-grid">
-                <div class="story-card" onclick="openStory('gojo')">
-                    <h3>🔵 Gojo Satoru Edit Story</h3>
-                    <p>Top 5 Honored One quotes & aesthetic visual slides.</p>
-                </div>
-                <div class="story-card" onclick="openStory('sukuna')">
-                    <h3>👑 King of Curses Story</h3>
-                    <p>Ryomen Sukuna domain expansion visual highlights.</p>
-                </div>
-                <div class="story-card" onclick="openStory('zoro')">
-                    <h3>⚔️ Roronoa Zoro Story</h3>
-                    <p>King of Hell sword style quotes and card graphics.</p>
-                </div>
+            <div class="stories-grid" id="dailyStoriesGrid">
+                <!-- Dynamically loaded daily stories -->
             </div>
         </div>
 
@@ -478,12 +467,30 @@
                 "Nothing happened. 🗡️🩸\n#RoronoaZoro #OnePiece",
                 "When the world forces you to be a warrior, you draw your swords. ⚔️🔥\n#Zoro #KingOfHell",
                 "Scars on the back are a swordsman's shame. 🛡️\n#ZoroQuotes"
+            ],
+            "eren": [
+                "If you don't fight, you can't win. Fight! 🕊️🔥\n#ErenYeager #AttackOnTitan",
+                "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️\n#Eren #Freedom"
+            ],
+            "naruto": [
+                "Hard work is worthless for those that don't believe in themselves. 🍥⚡\n#NarutoUzumaki #Hokage",
+                "If you don't like your destiny, don't accept it. 🦊🔥\n#NarutoShippuden"
+            ],
+            "kaneki": [
+                "What's wrong? Is it so strange to eat a human? Ghoul mode activated. 🩸🖤\n#KenKaneki #TokyoGhoul",
+                "I'm not the protagonist of a novel or anything... I'm just a college student who likes to read. ☕📖\n#TokyoGhoul"
+            ],
+            "guts": [
+                "In this world, is the destiny of mankind controlled by some transcendental entity or law? ⚔️🖤\n#Guts #Berserk",
+                "Struggle, rage, and contend... that is the only sword of a mortal! 🔥🩸\n#BerserkEdit"
             ]
         };
 
-        const storyData = {
+        const storyDatabase = {
             "gojo": {
                 title: "Gojo Satoru Story",
+                cardTitle: "🔵 Gojo Satoru Edit Story",
+                cardDesc: "Top Honored One quotes & aesthetic visual slides.",
                 slides: [
                     { heading: "The Honored One", text: "Throughout heaven and earth, I alone am the honored one. 🔵✨" },
                     { heading: "Limitless Power", text: "You're weak because you lack enough hatred... nah, i'm just too strong. 😎🔥" },
@@ -491,7 +498,9 @@
                 ]
             },
             "sukuna": {
-                title: "King of Curses",
+                title: "King of Curses Story",
+                cardTitle: "👑 King of Curses Story",
+                cardDesc: "Ryomen Sukuna domain expansion visual highlights.",
                 slides: [
                     { heading: "Stand Proud", text: "Stand proud, you are strong. 🔥👑" },
                     { heading: "Absolute Rule", text: "Know your place, mere insects. The king has arrived. ⚡😈" },
@@ -500,23 +509,101 @@
             },
             "zoro": {
                 title: "Roronoa Zoro Story",
+                cardTitle: "⚔️ Roronoa Zoro Story",
+                cardDesc: "King of Hell sword style quotes and card graphics.",
                 slides: [
                     { heading: "Nothing Happened", text: "Nothing happened. 🗡️🩸" },
                     { heading: "King of Hell", text: "When the world forces you to be a warrior, you draw your swords. ⚔️🔥" },
                     { heading: "Swordsman Pride", text: "Scars on the back are a swordsman's shame. 🛡️" }
                 ]
+            },
+            "eren": {
+                title: "Eren Yeager Story",
+                cardTitle: "🕊️ Eren Yeager Story",
+                cardDesc: "The freedom seeker and Attack Titan visual quotes.",
+                slides: [
+                    { heading: "Keep Moving Forward", text: "I will keep moving forward... until all my enemies are destroyed. 🌊⚔️" },
+                    { heading: "Fight!", text: "If you don't fight, you can't win. Fight! 🕊️🔥" },
+                    { heading: "Ultimate Freedom", text: "Tatakae! The scenery beyond the walls awaits. 🗝️" }
+                ]
+            },
+            "naruto": {
+                title: "Naruto Uzumaki Story",
+                cardTitle: "🍥 Naruto Uzumaki Story",
+                cardDesc: "The Ninja Way and Hokage journey story cards.",
+                slides: [
+                    { heading: "Believe It!", text: "Hard work is worthless for those that don't believe in themselves. 🍥⚡" },
+                    { heading: "My Ninja Way", text: "I never go back on my word, because that is my nindo! 🦊🔥" },
+                    { heading: "Destiny", text: "If you don't like your destiny, don't accept it. 🍃" }
+                ]
+            },
+            "kaneki": {
+                title: "Ken Kaneki Story",
+                cardTitle: "🖤 Ken Kaneki Story",
+                cardDesc: "Tokyo Ghoul awakening and centipede visual slides.",
+                slides: [
+                    { heading: "Ghoul Mode", text: "What's wrong? Is it so strange to eat a human? 🩸🖤" },
+                    { heading: "Tragedy", text: "I'm not the protagonist of a novel... I'm just a reader. ☕📖" },
+                    { heading: "Acceptance", text: "Pain makes a person grow up. 🕷️" }
+                ]
+            },
+            "guts": {
+                title: "Guts Berserk Story",
+                cardTitle: "⚔️ Guts Black Swordsman",
+                cardDesc: "Struggle and resilience quotes of the Black Swordsman.",
+                slides: [
+                    { heading: "The Struggle", text: "Struggle, rage, and contend... that is the only sword of a mortal! 🔥🩸" },
+                    { heading: "Destiny", text: "In this world, is human destiny controlled by a transcendental entity? ⚔️🖤" },
+                    { heading: "Never Give Up", text: "Even if you're torn to pieces, keep fighting! 🐺" }
+                ]
             }
         };
 
+        let currentActiveKeys = [];
         let currentStoryKey = null;
         let currentSlideIndex = 0;
         let storyTimer = null;
+
+        // Daily Rotation Logic based on Date string (YYYY-MM-DD)
+        function loadDailyStories() {
+            const keys = Object.keys(storyDatabase);
+            const today = new Date().toISOString().slice(0, 10); // e.g. "2026-06-07"
+            
+            // Simple hash sum from date characters to pick deterministic daily 3 characters
+            let hash = 0;
+            for (let i = 0; i < today.length; i++) {
+                hash += today.charCodeAt(i);
+            }
+
+            // Rotate keys array based on hash offset
+            let rotatedKeys = [...keys];
+            let shift = hash % keys.length;
+            for (let i = 0; i < shift; i++) {
+                rotatedKeys.push(rotatedKeys.shift());
+            }
+
+            currentActiveKeys = rotatedKeys.slice(0, 3);
+            const gridContainer = document.getElementById('dailyStoriesGrid');
+            gridContainer.innerHTML = '';
+
+            currentActiveKeys.forEach(key => {
+                const story = storyDatabase[key];
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.onclick = () => openStory(key);
+                card.innerHTML = `
+                    <h3>${story.cardTitle}</h3>
+                    <p>${story.cardDesc}</p>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
 
         function openStory(key) {
             currentStoryKey = key;
             currentSlideIndex = 0;
             document.getElementById('storyModal').style.display = 'flex';
-            document.getElementById('storyTitleIndicator').textContent = storyData[key].title;
+            document.getElementById('storyTitleIndicator').textContent = storyDatabase[key].title;
             buildProgressBars();
             showSlide(currentSlideIndex);
         }
@@ -529,7 +616,7 @@
         function buildProgressBars() {
             const container = document.getElementById('progressBarsContainer');
             container.innerHTML = '';
-            const slides = storyData[currentStoryKey].slides;
+            const slides = storyDatabase[currentStoryKey].slides;
             for (let i = 0; i < slides.length; i++) {
                 const bar = document.createElement('div');
                 bar.className = 'progress-bar';
@@ -540,7 +627,7 @@
 
         function showSlide(index) {
             clearTimeout(storyTimer);
-            const slides = storyData[currentStoryKey].slides;
+            const slides = storyDatabase[currentStoryKey].slides;
             if (index >= slides.length) {
                 closeStory();
                 return;
@@ -553,7 +640,6 @@
             document.getElementById('slideTitle').textContent = slides[index].heading;
             document.getElementById('slideText').textContent = slides[index].text;
 
-            // Update Progress bars visual state
             for (let i = 0; i < slides.length; i++) {
                 const fill = document.getElementById('fill-' + i);
                 fill.className = 'progress-fill';
@@ -564,7 +650,6 @@
                 }
             }
 
-            // Auto advance after 4 seconds per slide
             storyTimer = setTimeout(() => {
                 nextSlide();
             }, 4000);
@@ -572,7 +657,7 @@
 
         function nextSlide() {
             currentSlideIndex++;
-            const slides = storyData[currentStoryKey].slides;
+            const slides = storyDatabase[currentStoryKey].slides;
             if (currentSlideIndex < slides.length) {
                 showSlide(currentSlideIndex);
             } else {
@@ -661,7 +746,9 @@
 
         window.onload = function() {
             loadCaptions("gojo");
+            loadDailyStories();
         };
     </script>
 </body>
 </html>
+                                             
